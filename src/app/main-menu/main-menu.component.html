@@ -1,12 +1,13 @@
-<body>
-    <div class="container">
-        <h1>Library Search</h1>
-        <input type="text" id="searchInput" placeholder="Search for books...">
-        <button type="button" class="btn btn-primary">Primary</button>
+<div class="container">
+    <nav class="navbar navbar-expand navbar-dark bg-black">
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link active" href="#" aria-current="page" (click)="toggleSearchOff()"
+                >Home <span class="visually-hidden">(current)</span></a
+            >
+            <button class="nav-item nav-link" (click)="toggleSearch()">Search</button>
+        </div>
+    </nav>
 
-        <ul>
-        </ul>
-    </div>
-
-
-</body>
+    <app-search-book *ngIf="showSearch"></app-search-book>
+    
+</div>
