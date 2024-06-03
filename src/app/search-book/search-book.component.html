@@ -1,10 +1,8 @@
-
+<div class="container">
     <div class="text-bg-secondary ">
         <h1>Library Search</h1>
         <input type="text" [(ngModel)]="query" placeholder="Search for books...">
-        <button type="button" class="btn btn-primary" (click)="onSearch(query)">Primary</button>
-
-
+        <button type="button" class="btn btn-primary" (click)="onSearch(query)">Search</button>
         <div *ngIf="searchResults.length > 0">
             <ul>
                 <li *ngFor="let book of searchResults">
@@ -13,6 +11,6 @@
                     <h4>{{book.description}}</h4>
                 </li>
             </ul>
-
         </div>
     </div>
+</div>

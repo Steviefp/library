@@ -22,11 +22,17 @@ export class BookService {
     ]
   }
 
-  searchBook(query: string) : Book[] {
+  // name, author, description params
+  addBook(n: string, a: string, d: string): void {
+    this.books.push(
+      {name: n, author: a, description: d}
+    )
+  }
+  searchBook(query: string): Book[] {
     let foundBooks: Book[] = [];
 
     // text search using name and author, and description
-    foundBooks = this.books.filter(book=>
+    foundBooks = this.books.filter(book =>
       book.name.toLowerCase().includes(query.toLowerCase()) ||
       book.author.toLowerCase().includes(query.toLowerCase()) ||
       book.description.toLowerCase().includes(query.toLowerCase())
