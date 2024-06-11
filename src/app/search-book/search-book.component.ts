@@ -12,11 +12,25 @@ import { CommonModule } from '@angular/common';
 })
 export class SearchBookComponent {
   query: string = "";
+  results: any;
   searchResults : Book[] = [];
   constructor(private bookService: BookService){}
 
   onSearch(query:string){
-    this.searchResults = this.bookService.searchBook(query);
-    console.log(this.searchResults)
+    this.searchResults = [];
+    this.bookService.searchBook(query).subscribe(
+      data =>{
+        this.searchResults.push(...data);
+      },
+      error =>{
+        console.error("ERROR OCCURRED DURING SEARCH!: ", error)
+      }
+    );
+    
   }
+
+  onCheckOut(bookName: string){
+    this.bookService.checkOut(bookName);
+  }
+
 }

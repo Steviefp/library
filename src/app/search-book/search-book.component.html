@@ -6,9 +6,17 @@
         <div *ngIf="searchResults.length > 0">
             <ul>
                 <li *ngFor="let book of searchResults">
-                    <h3>{{book.name}}</h3>
-                    <h4>{{book.author}}</h4>
-                    <h4>{{book.description}}</h4>
+                    <h3>Title: {{book.name}}</h3>
+                    <h4>Author: {{book.author}}</h4>
+                    <h4>Description: {{book.description}}</h4>
+                    <!-- if book is currently checked out, don't allow user to checkout the book -->
+                    <div *ngIf="book.checkedOutName == ''">
+                        <h4 >Available: Yes</h4>
+                        <button type="button" class="btn btn-success" (click)="onCheckOut(book.name)">Checkout</button>
+                    </div>
+                    <div *ngIf="book.checkedOutName != ''">
+                        <h4 >Available: No</h4>
+                    </div>
                 </li>
             </ul>
         </div>
